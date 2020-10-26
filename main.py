@@ -6,12 +6,16 @@ def create_contact(name, phone, is_favorite):
     }
     return contact
 
+
 # Ajout du contact dans l'annuaire
 def add_contact(c):
     phone = c['phone']
+    name = c['name']
     annuaire[phone] = c
+    annuaire_name[name] = c
 
 
+# Prend et trie que les noms
 def get_names():
     names = []
     for n in annuaire:
@@ -21,23 +25,47 @@ def get_names():
     return names
 
 
+def display_all():
+    for n in annuaire:
+        print(annuaire[n])
 
-my_name = 'Alexis'
-my_phone = '06'
-my_favorite = True
+
+def get_contact(search):
+    if search.isnumeric():
+        return annuaire[search]
+    else:
+        return annuaire_name[search]
+
+
+# def new_contact():
+#     nom = input("Nom du Contact")
+#     phone = input("Numéro de téléphone")
+#     Favori = input("Favori ?")
+#     if Favori == "o":
+#         Favori = True,
+#     elif Favori == "n":
+#         Favori = False,
+#     else:
+#         print("ERREUR")
+#         new_contact()
+#     return nom, phone, Favori
+#
+# nom, phone, Favori = new_contact()
 annuaire = {}
+annuaire_name = {}
 
-contact = create_contact("Bob", "08", False)
+nom = "Alexis"
+phone = "0974"
+Favori = False
+contact = create_contact(nom, phone, Favori)
 add_contact(contact)
 
-contact = create_contact("Zulu", "09", True)
+nom = "Bob"
+phone = "0874"
+Favori = True
+contact = create_contact(nom, phone, Favori)
 add_contact(contact)
 
-contact = create_contact(my_name, my_phone, my_favorite)
-add_contact(contact)
-
-
-
-
-print(annuaire)
 print(get_names())
+display_all()
+print(f"Résultat de la recherche : {get_contact('0874')}")
