@@ -7,3 +7,4 @@ def say_hello(name):
 
 n = "Alexis"
 say_hello(n)
+print("test")
