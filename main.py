@@ -24,12 +24,12 @@ def get_names():
     names.sort()
     return names
 
-
+# Affiche touts les contacts
 def display_all():
     for n in annuaire:
-        print(annuaire[n])
+        print(f"{n} => {annuaire[n]}")
 
-
+# Permet de trouver le contact avec son numéro ou son nom
 def get_contact(search):
     if search.find('.'):
         search = search.replace('.', "")
@@ -56,4 +56,5 @@ add_contact(contact)
 
 print(get_names())
 display_all()
-print(f"Résultat de la recherche : {get_contact('08.74')}")
+search = input("Recherche : ")
+print(f"{get_contact(search)}")
