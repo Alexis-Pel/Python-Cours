@@ -31,26 +31,14 @@ def display_all():
 
 
 def get_contact(search):
+    if search.find('.'):
+        search = search.replace('.', "")
     if search.isnumeric():
         return annuaire[search]
     else:
         return annuaire_name[search]
 
 
-# def new_contact():
-#     nom = input("Nom du Contact")
-#     phone = input("Numéro de téléphone")
-#     Favori = input("Favori ?")
-#     if Favori == "o":
-#         Favori = True,
-#     elif Favori == "n":
-#         Favori = False,
-#     else:
-#         print("ERREUR")
-#         new_contact()
-#     return nom, phone, Favori
-#
-# nom, phone, Favori = new_contact()
 annuaire = {}
 annuaire_name = {}
 
@@ -68,4 +56,4 @@ add_contact(contact)
 
 print(get_names())
 display_all()
-print(f"Résultat de la recherche : {get_contact('0874')}")
+print(f"Résultat de la recherche : {get_contact('08.74')}")
