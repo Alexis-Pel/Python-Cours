@@ -30,6 +30,18 @@ if '-display' in arg:
         except IndexError:
             print("Veuillez indiquer le numéro ou le nom que vous souhaitez rechercher")
 
+if '-find' in arg:
+    finder = arg.index("-find")
+    number = finder + 1
+    numberpipe = arg[number]
+    try:
+        split_list = numberpipe.split('|')
+        for n in split_list:
+            print(phonebook.get_contact(n))
+
+
+    except IndexError:
+        print("Veuillez indiquer le numéro ou le nom que vous souhaitez rechercher")
 
 # phonebook.new_contact()
 # phonebook.print_all()
