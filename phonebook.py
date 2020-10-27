@@ -1,7 +1,14 @@
 import logger
 
-# Créer le contact
+
 def create_contact(name, phone, is_favorite):
+    """
+    Permet de créer le contact
+    :param name: Nom du contact
+    :param phone: Le numéro de téléphone du contact
+    :param is_favorite: Le contact est en favoris ou non
+    :return: le dictionnaire contact avec les paramètres
+    """
     contact = {
         'name': name,
         'phone': phone,
@@ -12,6 +19,10 @@ def create_contact(name, phone, is_favorite):
 
 
 def new_contact():
+    """
+    Demande a l'utilisateur d'entrer les paramètres du nouveau contact
+    :return: Rien
+    """
     nom = input("Nom : ")
     phone = input("Phone : ")
     favori = input("Favori ?(o)(n) ")
@@ -25,18 +36,27 @@ def new_contact():
     if new == 'o':
         new_contact()
 
-# Ajout du contact dans l'annuaire
+
 def add_contact(c):
+    """
+    Ajout du contact dans l'annuaire
+    :param c: Le dictionnaire de create_contact
+    :return: Rien
+    """
     logger.log("ADD CONTACT \n")
     phone = c['phone']
     name = c['name']
     annuaire[phone] = c
     annuaire_name[name] = c
     logger.log(f"name : {name} / phone : {phone}\n")
+    return None
 
 
-# Prend et trie que les noms
 def get_names():
+    """
+    Prend et trie que les noms
+    :return: Les noms enregistrés
+    """
     names = []
     for n in annuaire:
         names.append(annuaire[n]["name"])
@@ -45,17 +65,25 @@ def get_names():
     return names
 
 
-# Affiche touts les contacts
 def display_all():
+    """
+    Affiche touts les contacts
+    :return: Rien
+    """
     logger.log("DISPLAY ALL : \n")
     for n in annuaire:
         print(f"{n} => {annuaire[n]}")
         logger.log(f"{n} => {annuaire[n]}")
     logger.log("\n")
+    return None
 
 
-# Permet de trouver le contact avec son numéro ou son nom
 def get_contact(search):
+    """
+    Permet de trouver le contact avec son numéro ou son nom
+    :param search: Le numéro ou le nom que l'utilisateur recherche
+    :return: Rien
+    """
     logger.log("GET CONTACT \n")
     try:
         if search.find('.'):
@@ -73,12 +101,16 @@ def get_contact(search):
         return None
 
 
-# Affiche les noms des contacts, puis l'annuaire et ensuite la recherche
 def print_all():
+    """
+    Affiche les noms des contacts, puis l'annuaire et ensuite propose la recherche
+    :return: Rien
+    """
     print(get_names())
     display_all()
     search = input("Recherche : ")
     print(f"{get_contact(search)}")
+    return None
 
 
 annuaire = {}

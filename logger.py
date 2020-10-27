@@ -3,21 +3,33 @@ from datetime import datetime
 dateTimeObj = datetime.now()
 
 
-# Place une ligne au début de chaques logs
 def first_log():
+    """
+    Place une ligne au début de chaques logs
+    :return: Rien
+    """
     with open('phonebook.log', 'a') as f:
         f.write("##################################################################" + "\n")
+    return None
 
 
-# écrit dans le fichier log
 def log(write):
+    """
+    écrit dans le fichier log
+    :param write: Ce qui a à écrire dans le fichier phonebook.log
+    :return: Rien
+    """
     with open('phonebook.log', 'a') as f:
         f.write('{0:%Y-%m-%d %H:%M:%S}'.format(datetime.now()) + " : " + write)
         f.write("\n")
+    return None
 
 
-# Affiche les logs dans le terminal
 def dump_log():
+    """
+    Affiche les logs dans le terminal
+    :return: Rien
+    """
     try:
         f = open('phonebook.log', 'r')
         line = f.readline()
@@ -27,3 +39,4 @@ def dump_log():
         f.close()
     except FileNotFoundError as e:
         print(e)
+    return None
