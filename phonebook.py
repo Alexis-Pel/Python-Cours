@@ -1,6 +1,6 @@
 import logger
 
-
+# Créer le contact
 def create_contact(name, phone, is_favorite):
     contact = {
         'name': name,
