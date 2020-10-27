@@ -16,6 +16,7 @@ def add_contact(c):
     annuaire_name[name] = c
 
 
+
 # Prend et trie que les noms
 def get_names():
     names = []
