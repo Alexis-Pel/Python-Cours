@@ -11,6 +11,20 @@ def create_contact(name, phone, is_favorite):
     return contact
 
 
+def new_contact():
+    nom = input("Nom : ")
+    phone = input("Phone : ")
+    favori = input("Favori ?(o)(n) ")
+    Favori = False
+    if favori == 'o':
+        Favori = True
+    else:
+        Favori == False
+    create_contact(nom, phone, Favori)
+    new = input("Nouveau contact ? (o / n)")
+    if new == 'o':
+        new_contact()
+
 # Ajout du contact dans l'annuaire
 def add_contact(c):
     logger.log("ADD CONTACT \n")
@@ -19,6 +33,7 @@ def add_contact(c):
     annuaire[phone] = c
     annuaire_name[name] = c
     logger.log(f"name : {name} / phone : {phone}\n")
+
 
 # Prend et trie que les noms
 def get_names():
@@ -38,19 +53,24 @@ def display_all():
         logger.log(f"{n} => {annuaire[n]}")
     logger.log("\n")
 
+
 # Permet de trouver le contact avec son numéro ou son nom
 def get_contact(search):
     logger.log("GET CONTACT \n")
-    if search.find('.'):
-        search = search.replace('.', "")
-    if search.isnumeric():
-        a = annuaire[search]
-        logger.log(str(a))
-        return annuaire[search]
-    else:
-        a = annuaire_name[search]
-        logger.log(str(a))
-        return annuaire_name[search]
+    try:
+        if search.find('.'):
+            search = search.replace('.', "")
+        if search.isnumeric():
+            a = annuaire[search]
+            logger.log(str(a))
+            return annuaire[search]
+        else:
+            a = annuaire_name[search]
+            logger.log(str(a))
+            return annuaire_name[search]
+    except KeyError as e:
+        print(e)
+        return None
 
 
 # Affiche les noms des contacts, puis l'annuaire et ensuite la recherche

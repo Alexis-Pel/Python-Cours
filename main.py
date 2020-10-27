@@ -1,16 +1,8 @@
 import phonebook
 import logger
-import error
 logger.first_log()
 
 
-nom = "Alexis"
-phone = "09"
-Favori = False
-contact = phonebook.create_contact(nom, phone, Favori)
-
-nom = "Bob"
-phone = "08"
-Favori = True
-contact = phonebook.create_contact(nom, phone, Favori)
+phonebook.new_contact()
 phonebook.print_all()
+logger.dump_log()
