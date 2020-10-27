@@ -31,6 +31,7 @@ def new_contact():
         Favori = True
     else:
         Favori == False
+
     create_contact(nom, phone, Favori)
     new = input("Nouveau contact ? (o / n)")
     if new == 'o':
