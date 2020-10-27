@@ -1,3 +1,6 @@
+import logger
+
+
 def create_contact(name, phone, is_favorite):
     contact = {
         'name': name,
@@ -10,12 +13,12 @@ def create_contact(name, phone, is_favorite):
 
 # Ajout du contact dans l'annuaire
 def add_contact(c):
+    logger.log("ADD CONTACT \n")
     phone = c['phone']
     name = c['name']
     annuaire[phone] = c
     annuaire_name[name] = c
-
-
+    logger.log(f"name : {name} / phone : {phone}\n")
 
 # Prend et trie que les noms
 def get_names():
@@ -29,17 +32,24 @@ def get_names():
 
 # Affiche touts les contacts
 def display_all():
+    logger.log("DISPLAY ALL : \n")
     for n in annuaire:
         print(f"{n} => {annuaire[n]}")
-
+        logger.log(f"{n} => {annuaire[n]}")
+    logger.log("\n")
 
 # Permet de trouver le contact avec son numéro ou son nom
 def get_contact(search):
+    logger.log("GET CONTACT \n")
     if search.find('.'):
         search = search.replace('.', "")
     if search.isnumeric():
+        a = annuaire[search]
+        logger.log(str(a))
         return annuaire[search]
     else:
+        a = annuaire_name[search]
+        logger.log(str(a))
         return annuaire_name[search]
 
 
