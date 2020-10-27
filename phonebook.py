@@ -61,7 +61,6 @@ def get_names():
     names = []
     for n in annuaire:
         names.append(annuaire[n]["name"])
-
     names.sort()
     return names
 
